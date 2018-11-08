@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import './NavBar.css'
+import Logo from '../Logo'
+import SignUp from '../SignUp'
+import Login from '../Login'
 
 class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar">
-        <button id="logo">Learn me good</button>
-        <button class="right">SignUp</button>
-        <button class="right">Login</button>
+        <Logo />
+        <SignUp />
+        <Login />
       </nav>
     );
   }

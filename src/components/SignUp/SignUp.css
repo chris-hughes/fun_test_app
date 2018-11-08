@@ -1,0 +1,15 @@
+.SignUp {
+  display: block;
+  float: right;
+
+  font-family: sans-serif;
+  font-size: 20px;
+  color: white;
+
+  background-color: #855394;
+
+  padding: 10px;
+  margin-top: 11px;
+  margin-right: 10px;
+
+}
