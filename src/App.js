@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar/'
+import SceneWrapper from './components/SceneWrapper'
 import './App.css';
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <h1>Hello World</h1>
+        <SceneWrapper />
       </div>
     );
   }
