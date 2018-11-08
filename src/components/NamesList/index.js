@@ -8,10 +8,15 @@ class NamesList extends Component {
       <div className="NamesList">
         <h2>Best People Ever</h2>
         <ul>
-          <NameButton name="Chris Hughes" />
-          <NameButton name="Giulio Ambrogi" />
-          <NameButton name="Mina Kasherova" />
-          <NameButton name="Raya Raycheva" />
+          {this.props.people.map((name,i)=>{
+            return (
+              <NameButton
+                name={name}
+                nameClick={this.props.nameClick}
+                key={i}
+              />
+            )
+          })}
         </ul>
       </div>
     )

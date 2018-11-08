@@ -5,7 +5,10 @@ import NameButton from '.'
 describe('NameButton',()=>{
   it('should display with the correct text',()=>{
     const props = {
-      name: "Chris Hughes"
+      name: {
+        firstName: "Chris",
+        surname: "Hughes"
+      }
     }
     const wrapper = shallow(<NameButton {...props} />);
     expect(wrapper.find('.NameButton').length).toEqual(1);

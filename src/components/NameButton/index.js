@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import './NameButton.css'
 
 class NameButton extends Component {
+  handleClick(){
+    alert('hello')
+  }
+
   render(){
     return (
-      <button className="NameButton">
-        {this.props.name}
+      <button className="NameButton"
+        onClick={()=>{this.props.nameClick(this.props.name)}}>
+        {this.props.name.firstName+" "+this.props.name.surname}
       </button>
     )
   }
