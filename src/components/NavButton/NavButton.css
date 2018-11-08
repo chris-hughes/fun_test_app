@@ -5,10 +5,13 @@
   font-family: sans-serif;
   font-size: 20px;
   color: white;
+  background-color: #537294;
 
-  background-color: #855394;
-
+  border: 0px;
   padding: 10px;
   margin-top: 11px;
   margin-right: 10px;
 }
+  .NavButton:hover {
+    background-color: #855394;
+  }
