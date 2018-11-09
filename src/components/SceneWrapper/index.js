@@ -13,6 +13,7 @@ class SceneWrapper extends Component {
       return {firstName: person.firstName, surname: person.surname}
     })
 
+    // default profile
     const profile = fakeData[0];
 
     this.state = {
