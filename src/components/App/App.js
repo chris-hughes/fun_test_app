@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Routes from '../../Routes'
 import NavBar from '../Navigation/NavBar'
-import SceneWrapper from '../Scenes/mainView/SceneWrapper'
+import Router from '../../Routes'
 import './App.css';
 
 class App extends Component {
@@ -9,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <SceneWrapper />
+        <Router />
       </div>
     );
   }

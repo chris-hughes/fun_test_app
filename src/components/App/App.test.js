@@ -4,7 +4,10 @@ import App from './App'
 
 describe('App',()=>{
   it('should render the App',()=>{
-    const wrapper = shallow(<App />);
+    const props = {
+      location: "/"
+    }
+    const wrapper = shallow(<App {...props} />);
     expect(wrapper.find('.App').length).toEqual(1);
   })
 })

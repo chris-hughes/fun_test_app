@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import NamesList from '../NamesList'
-import Profile from '../Profile'
-import './SceneWrapper.css'
+import NamesList from './NamesList'
+import Profile from './Profile'
+import './Dashboard.css'
 
-import { fakeData } from '../../../../helpers/fakeData'
+import { fakeData } from '../../../helpers/fakeData'
 
-class SceneWrapper extends Component {
+class Dashboard extends Component {
   constructor(props){
     super(props)
 
@@ -37,7 +37,7 @@ class SceneWrapper extends Component {
 
   render(){
     return (
-      <div className="SceneWrapper">
+      <div className="Dashboard">
         <NamesList people={this.state.people} nameClick={this.handleNameClick} />
         <Profile {...this.state.profile} />
       </div>
@@ -45,4 +45,4 @@ class SceneWrapper extends Component {
   }
 }
 
-export default SceneWrapper;
+export default Dashboard;
