@@ -12,3 +12,7 @@
   margin: 5px;
 
 }
+  .Logo a {
+    text-decoration: none;
+    color: white;
+  }

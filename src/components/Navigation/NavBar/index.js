@@ -8,8 +8,8 @@ class NavBar extends Component {
     return (
       <nav className="NavBar">
         <Logo />
-        <NavButton location="Login" />
-        <NavButton location="Sign Up" />
+        <NavButton text="Login" route="/Login"/>
+        <NavButton text="Sign Up" route="/SignUp"/>
       </nav>
     );
   }

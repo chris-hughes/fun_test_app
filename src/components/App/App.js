@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Routes from '../../Routes'
 import NavBar from '../Navigation/NavBar'
 import SceneWrapper from '../Scenes/mainView/SceneWrapper'
 import './App.css';

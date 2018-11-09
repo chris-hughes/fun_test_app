@@ -5,7 +5,8 @@ import NavButton from '.'
 describe('NavButton',()=>{
   it('should display with the correct text',()=>{
     const props={
-      location: "Login"
+      text: "Login",
+      route: "/Login"
     }
     const wrapper = shallow(<NavButton {...props} />);
     expect(wrapper.find('.NavButton').length).toEqual(1);
