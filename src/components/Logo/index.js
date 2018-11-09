@@ -5,7 +5,7 @@ class Logo extends Component {
   render (){
     return (
       <button className="Logo">
-        Learn me good
+        Some people just want to watch the world learn
       </button>
     )
   }

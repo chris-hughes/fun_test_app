@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import './NameButton.css'
 
 class NameButton extends Component {
-  handleClick(){
-    alert('hello')
-  }
-
   render(){
     return (
       <button className="NameButton"

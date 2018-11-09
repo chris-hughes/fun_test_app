@@ -5,8 +5,6 @@ import './SceneWrapper.css'
 
 import { fakeData } from '../../helpers/fakeData'
 
-console.log(fakeData)
-
 class SceneWrapper extends Component {
   constructor(props){
     super(props)
@@ -22,51 +20,17 @@ class SceneWrapper extends Component {
       profile
     }
 
-    // this.state = {
-    //   people: [
-    //     {firstName: "Chris", surname: "Hughes"},
-    //     {firstName: "Giulio", surname: "Ambrogi"},
-    //     {firstName: "Mina", surname: "Kasherova"},
-    //     {firstName: "Raya", surname: "Raycheva"}
-    //   ],
-    //   profile: {
-    //     firstName: "Chris",
-    //     surname: "Hughes",
-    //     teaching: [
-    //       "Maths",
-    //       "Guitar",
-    //     ],
-    //     learning: [
-    //       "React",
-    //       "Testing",
-    //       "Bulgarian"
-    //     ]
-    //   }
-    // }
     this.handleNameClick = this.handleNameClick.bind(this);
   }
 
   handleNameClick(name){
+
+    const profile = fakeData.find((person)=>{
+      return person.firstName===name.firstName && person.surname===name.surname
+    })
+
     this.setState({
-      people: [
-        {firstName: "Chris", surname: "Hughes"},
-        {firstName: "Giulio", surname: "Ambrogi"},
-        {firstName: "Mina", surname: "Kasherova"},
-        {firstName: "Raya", surname: "Raycheva"}
-      ],
-      profile: {
-        firstName: name.firstName,
-        surname: name.surname,
-        teaching: [
-          "Maths",
-          "Guitar",
-        ],
-        learning: [
-          "React",
-          "Testing",
-          "Bulgarian"
-        ]
-      }
+      profile
     })
   }
 
