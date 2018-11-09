@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import NamesList from '../NamesList'
-import ProfileWrapper from '../ProfileWrapper'
+import Profile from '../Profile'
 import './SceneWrapper.css'
 
-import { fakeData } from '../../helpers/fakeData'
+import { fakeData } from '../../../../helpers/fakeData'
 
 class SceneWrapper extends Component {
   constructor(props){
     super(props)
 
     const people = fakeData.map((person)=>{
-      return {firstName: person.firstName, surname: person.surname}
+      return {firstName: person.firstName, lastName: person.lastName}
     })
 
     // default profile
@@ -27,7 +27,7 @@ class SceneWrapper extends Component {
   handleNameClick(name){
 
     const profile = fakeData.find((person)=>{
-      return person.firstName===name.firstName && person.surname===name.surname
+      return person.firstName===name.firstName && person.lastName===name.lastName
     })
 
     this.setState({
@@ -39,7 +39,7 @@ class SceneWrapper extends Component {
     return (
       <div className="SceneWrapper">
         <NamesList people={this.state.people} nameClick={this.handleNameClick} />
-        <ProfileWrapper {...this.state.profile} />
+        <Profile {...this.state.profile} />
       </div>
     )
   }

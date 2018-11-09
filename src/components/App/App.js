@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavBar from './components/NavBar/'
-import SceneWrapper from './components/SceneWrapper'
+import NavBar from '../Navigation/NavBar'
+import SceneWrapper from '../Scenes/mainView/SceneWrapper'
 import './App.css';
 
 class App extends Component {

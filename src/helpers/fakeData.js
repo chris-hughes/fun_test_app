@@ -2,7 +2,7 @@ export const fakeData = [
   {
     id: 1,
     firstName: "Chris",
-    surname: "Hughes",
+    lastName: "Hughes",
     teaching: [
       "Maths",
       "Guitar",
@@ -16,7 +16,7 @@ export const fakeData = [
   {
     id: 2,
     firstName: "Giulio",
-    surname: "Ambrogi",
+    lastName: "Ambrogi",
     teaching: [
       "Front End",
       "Guitar",
@@ -29,7 +29,7 @@ export const fakeData = [
   {
     id: 3,
     firstName: "Mina",
-    surname: "Kasherova",
+    lastName: "Kasherova",
     teaching: [
       "Product",
       "Eye Rolls"
@@ -42,14 +42,26 @@ export const fakeData = [
   {
     id: 4,
     firstName: "Raya",
-    surname: "Raycheva",
+    lastName: "Raycheva",
     teaching: [
       "User Research",
       "Side Eye",
     ],
     learning: [
       "Photography",
-      "History",
+      "Guitar",
+    ]
+  },
+  {
+    id: 5,
+    firstName: "Ashley",
+    lastName: "Peacock",
+    teaching: [
+      "Beating Rob at TT",
+      "Organisation",
+    ],
+    learning: [
+      "Beating Chris at TT",
     ]
   }
 ];

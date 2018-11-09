@@ -7,7 +7,7 @@ describe('NameButton',()=>{
     const props = {
       name: {
         firstName: "Chris",
-        surname: "Hughes"
+        lastName: "Hughes"
       }
     }
     const wrapper = shallow(<NameButton {...props} />);

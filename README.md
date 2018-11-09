@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 `{
     "firstName": "Chris",
-    "surname": "Hughes",
+    "lastName": "Hughes",
     "teaching": [
       "Maths",
       "Guitar",
@@ -31,5 +31,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - what should I be using as keys when iterating?
 - why does css suck so so much?
-- setState only worked when I set the whole thing (not just tried to update)
 - i still don't know how to test

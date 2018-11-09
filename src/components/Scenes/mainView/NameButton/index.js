@@ -6,7 +6,7 @@ class NameButton extends Component {
     return (
       <button className="NameButton"
         onClick={()=>{this.props.nameClick(this.props.name)}}>
-        {this.props.name.firstName+" "+this.props.name.surname}
+        {this.props.name.firstName+" "+this.props.name.lastName}
       </button>
     )
   }

@@ -1,12 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import ProfileWrapper from '.'
+import Profile from '.'
 
-describe('ProfileWrapper',()=>{
+describe('Profile',()=>{
   it('should display with correct name',()=>{
     const props = {
       firstName: "Chris",
-      surname: "Hughes",
+      lastName: "Hughes",
       teaching: [
         "Maths",
         "Guitar",
@@ -17,9 +17,9 @@ describe('ProfileWrapper',()=>{
         "Food"
       ]
     }
-    const wrapper = shallow(<ProfileWrapper {...props} />);
-    expect(wrapper.find('.ProfileWrapper').length).toEqual(1);
-    expect(wrapper.find('.ProfileWrapper h2').text()).toContain("Chris Hughes");
+    const wrapper = shallow(<Profile {...props} />);
+    expect(wrapper.find('.Profile').length).toEqual(1);
+    expect(wrapper.find('.Profile h2').text()).toContain("Chris Hughes");
     expect(wrapper.find('.teaching').length).toEqual(2);
     expect(wrapper.find('.learning').length).toEqual(3);
 
