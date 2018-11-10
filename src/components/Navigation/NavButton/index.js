@@ -6,9 +6,11 @@ import './NavButton.css'
 class NavButton extends Component {
   render(){
     return (
-      <button className="NavButton">
-        <Link to={this.props.route}>{this.props.text}</Link>
-      </button>
+      <Link to={this.props.route}>
+        <button className="NavButton">
+          {this.props.text}
+        </button>
+      </Link>
     )
   }
 }

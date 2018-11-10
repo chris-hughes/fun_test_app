@@ -32,3 +32,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - what should I be using as keys when iterating?
 - why does css suck so so much?
 - i still don't know how to test
+
+## `Notes`
+
+withStyles injects a `classes` prop. So you define a `style` object and then
+apply the keys to as classes to the elements you want to style
