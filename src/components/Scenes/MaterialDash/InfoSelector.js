@@ -8,6 +8,7 @@ import { Paper,
 import { withStyles } from '@material-ui/core/styles';
 import PeopleIcon from '@material-ui/icons/People'
 import LocalActivityIcon from '@material-ui/icons/LocalActivity'
+import InfoList from './InfoList'
 
 const styles = theme => ({
   root: {
@@ -17,22 +18,24 @@ const styles = theme => ({
   },
 });
 
-class NamesList extends Component {
+class InfoSelector extends Component {
   state = {
-    categorySelected: "People",
-    selectedIndex: 0,
+    categorySelected: "People"
   };
 
   handleCategoryClick(e,cat){
     this.setState({ categorySelected: cat })
   }
 
-  handleListItemClick(e,index){
-    this.setState({ selectedIndex: index });
-  };
 
   render(){
     const { classes } = this.props;
+    let items;
+    if (this.state.categorySelected==="People"){
+      items=this.props.people
+    } else if (this.state.categorySelected==="Subject"){
+      items=this.props.subjects
+    }
 
     return (
       <Paper style={this.props.styles.Paper}>
@@ -62,19 +65,8 @@ class NamesList extends Component {
           <Divider />
 
           <List component="nav">
-            {this.props.people.map((name,i)=>{
-              return (
-                <ListItem
-                  button
-                  selected={this.state.selectedIndex === i}
-                  onClick={event => this.handleListItemClick(event, i)}
-                  key={i}
-                >
-                  <ListItemText primary={name.firstName+" "+name.lastName} />
-                </ListItem>
-
-              )
-            })}
+            <InfoList items={items}
+              cat={this.state.categorySelected} />
           </List>
         </div>
       </Paper>
@@ -82,4 +74,4 @@ class NamesList extends Component {
   }
 }
 
-export default withStyles(styles)(NamesList);
+export default withStyles(styles)(InfoSelector);

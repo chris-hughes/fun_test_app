@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Grid } from '@material-ui/core'
-import NamesList from './NamesList'
+import InfoSelector from './InfoSelector'
 import Profile from './Profile'
-import { fakeData } from '../../../helpers/fakeData'
+
+import { fakePeople } from '../../../helpers/fakePeople'
+import { fakeSubjects } from '../../../helpers/fakeSubjects'
 
 const styles = {
   Paper: { padding:20, marginTop:10, marginBottom:10 }
@@ -12,37 +14,31 @@ class MaterialDash extends Component {
   constructor(props){
     super(props)
 
-    const people = fakeData.map((person)=>{
+    const people = fakePeople.map((person)=>{
       return {firstName: person.firstName, lastName: person.lastName}
     })
 
-    // default profile
-    const profile = fakeData[0];
+    const subjects = fakeSubjects.map((sub)=>{
+      return {
+        subject: sub.subject,
+        category: sub.category
+      }
+    })
 
     this.state = {
       people,
-      profile
+      subjects
     }
-
-    this.handleNameClick = this.handleNameClick.bind(this);
-  }
-
-  handleNameClick(name){
-
-    const profile = fakeData.find((person)=>{
-      return person.firstName===name.firstName && person.lastName===name.lastName
-    })
-
-    this.setState({
-      profile
-    })
   }
 
   render(){
     return (
       <Grid container>
         <Grid item sm>
-          <NamesList styles={styles} people={this.state.people} />
+          <InfoSelector styles={styles}
+            people={this.state.people}
+            subjects={this.state.subjects}
+          />
         </Grid>
         <Grid item sm>
           <Profile styles={styles} />

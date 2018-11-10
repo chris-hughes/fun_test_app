@@ -55,7 +55,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `{
   subject: "Maths",
   category: "Academic",
-  image: __pathname/Maths.png
+  image: "Maths.png"
 }`
 
 ### `questions`

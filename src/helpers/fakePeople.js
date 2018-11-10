@@ -1,4 +1,4 @@
-export const fakeData = [
+export const fakePeople = [
   {
     id: 1,
     firstName: "Chris",
