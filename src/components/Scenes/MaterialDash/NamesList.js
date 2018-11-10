@@ -6,7 +6,6 @@ import { Paper,
          ListItemText,
          Divider } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
-
 import PeopleIcon from '@material-ui/icons/People'
 import LocalActivityIcon from '@material-ui/icons/LocalActivity'
 
@@ -20,8 +19,13 @@ const styles = theme => ({
 
 class NamesList extends Component {
   state = {
-    selectedIndex: 1,
+    categorySelected: "People",
+    selectedIndex: 0,
   };
+
+  handleCategoryClick(e,cat){
+    this.setState({ categorySelected: cat })
+  }
 
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
@@ -36,8 +40,8 @@ class NamesList extends Component {
           <List component="nav">
             <ListItem
               button
-              selected={this.state.selectedIndex === 0}
-              onClick={event => this.handleListItemClick(event, 0)}
+              selected={this.state.categorySelected === "People"}
+              onClick={event => this.handleCategoryClick(event, "People")}
             >
               <ListItemIcon>
                 <PeopleIcon />
@@ -46,8 +50,8 @@ class NamesList extends Component {
             </ListItem>
             <ListItem
               button
-              selected={this.state.selectedIndex === 1}
-              onClick={event => this.handleListItemClick(event, 1)}
+              selected={this.state.categorySelected === "Subject"}
+              onClick={event => this.handleCategoryClick(event, "Subject")}
             >
               <ListItemIcon>
                 <LocalActivityIcon />
@@ -56,21 +60,21 @@ class NamesList extends Component {
             </ListItem>
           </List>
           <Divider />
+
           <List component="nav">
-            <ListItem
-              button
-              selected={this.state.selectedIndex === 2}
-              onClick={event => this.handleListItemClick(event, 2)}
-            >
-              <ListItemText primary="Chris Hughes" />
-            </ListItem>
-            <ListItem
-              button
-              selected={this.state.selectedIndex === 3}
-              onClick={event => this.handleListItemClick(event, 3)}
-            >
-              <ListItemText primary="Mina Kasherova" />
-            </ListItem>
+            {this.props.people.map((name,i)=>{
+              return (
+                <ListItem
+                  button
+                  selected={this.state.selectedIndex === i}
+                  onClick={event => this.handleListItemClick(event, i)}
+                  key={i}
+                >
+                  <ListItemText primary={name.firstName+" "+name.lastName} />
+                </ListItem>
+
+              )
+            })}
           </List>
         </div>
       </Paper>
