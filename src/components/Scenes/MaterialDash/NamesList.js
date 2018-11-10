@@ -27,7 +27,7 @@ class NamesList extends Component {
     this.setState({ categorySelected: cat })
   }
 
-  handleListItemClick = (event, index) => {
+  handleListItemClick(e,index){
     this.setState({ selectedIndex: index });
   };
 

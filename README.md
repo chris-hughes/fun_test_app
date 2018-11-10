@@ -4,28 +4,59 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `small things`
 
-- mouseover nav buttons
+~~ mouseover nav button ~~
+
+-- alphabetical order the lists
 
 ### `functionality`
 
-- nav buttons actually route places
+~~ nav buttons actually route places ~~
+
+- think we need a model for subjects too?
+- add avatars
+- turn names into Chips (with avatar)
+- drawer menu?
 
 ###
 
 - model of person?
 
 `{
-    "firstName": "Chris",
-    "lastName": "Hughes",
-    "teaching": [
-      "Maths",
-      "Guitar",
-    ],
-    "learning": [
-      "React",
-      "Trumpet",
-    ]
-  }`
+  "firstName": "Chris",
+  "lastName": "Hughes",
+  "teaching": [
+    {
+      subject: "Maths",
+      category: "Academic",
+      level: "Intermediate"
+    },
+    {
+      subject: "Guitar",
+      category: "Music",
+      level: "Intermediate"
+    }
+  ],
+  "learning": [
+    {
+      subject: "React",
+      category: "Tech",
+      level: "Beginner"
+    },
+    {
+      subject: "Piano",
+      category: "Music",
+      level: "Novice"
+    }
+  ]
+}`
+
+- model of subject?
+
+`{
+  subject: "Maths",
+  category: "Academic",
+  image: __pathname/Maths.png
+}`
 
 ### `questions`
 
