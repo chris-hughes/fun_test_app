@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../Navigation/NavBar'
 import Navi from '../Navigation'
 import Router from '../../Routes'
 import './App.css';
