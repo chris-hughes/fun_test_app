@@ -6,13 +6,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ~~ mouseover nav button ~~
 
--- alphabetical order the lists
+~~ alphabetical order the lists ~~
+
+- find a way to extract unique categories from Subjects
 
 ### `functionality`
 
 ~~ nav buttons actually route places ~~
 
-- think we need a model for subjects too?
+~~ think we need a model for subjects too ~~
+
 - add avatars
 - turn names into Chips (with avatar)
 - drawer menu?
@@ -67,4 +70,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## `Notes`
 
 withStyles injects a `classes` prop. So you define a `style` object and then
-apply the keys to as classes to the elements you want to style
+apply the keys as classes to the elements you want to style

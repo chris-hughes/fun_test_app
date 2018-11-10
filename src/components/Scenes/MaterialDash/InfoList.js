@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { ListItem,
-         ListItemText
+         ListItemText,
+         ListSubheader
          } from '@material-ui/core'
+
+import { subjectCategories } from '../../../helpers/subjectCategories'
 
 class NamesList extends Component {
   constructor(props){
     super(props)
 
     this.state={
-      selectedIndex: 0
+      selectedIndex: "00"
     }
 
     this.handleItemClick = this.handleItemClick.bind(this);
@@ -21,7 +24,17 @@ class NamesList extends Component {
   render(){
     let list;
     if (this.props.cat==="People"){
-      list = this.props.items.map((name,i)=>{
+      list = this.props.items.sort((a,b)=>{
+        let nameA = a.firstName.toUpperCase()
+        let nameB = b.firstName.toUpperCase()
+        if (nameA < nameB){
+          return -1;
+        }
+        if (nameA > nameB){
+          return 1;
+        }
+        return 0;
+      }).map((name,i)=>{
         return (
           <ListItem
             button
@@ -34,18 +47,49 @@ class NamesList extends Component {
         )
       })
     } else if (this.props.cat==="Subject"){
-      list = this.props.items.map((sub,i)=>{
-        return (
-          <ListItem
-            button
-            selected={this.state.selectedIndex === i}
-            onClick={event => this.handleItemClick(event, i)}
-            key={i}
-          >
-            <ListItemText primary={sub.subject} />
-          </ListItem>
-        )
-      })
+      list = subjectCategories.sort((a,b)=>{
+        let nameA = a.category.toUpperCase()
+        let nameB = b.category.toUpperCase()
+        if (nameA < nameB){
+          return -1;
+        }
+        if (nameA > nameB){
+          return 1;
+        }
+        return 0;
+      }).map((cat,i)=>{
+          return (
+            <div>
+            <ListSubheader key={String(i)}>{cat.category}</ListSubheader>
+              {this.props.items.filter((subject)=>{
+                return subject.category.includes(cat.category)
+              }).sort((a,b)=>{
+                let nameA = a.subject.toUpperCase()
+                let nameB = b.subject.toUpperCase()
+                if (nameA < nameB){
+                  return -1;
+                }
+                if (nameA > nameB){
+                  return 1;
+                }
+                return 0;
+              }).map((subject,j)=>{
+                return (
+                  <ListItem
+                    button
+                    selected={this.state.selectedIndex === String(i)+String(j)}
+                    onClick={event => this.handleItemClick(event, String(i)+String(j))}
+                    key={String(i)+String(j)}
+                  >
+                    <ListItemText primary={subject.subject} />
+                  </ListItem>
+                )
+              })}
+            </div>
+          )
+        }
+      )
+
     }
 
     return (
