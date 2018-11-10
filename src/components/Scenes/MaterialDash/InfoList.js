@@ -6,19 +6,25 @@ import { ListItem,
 
 import { subjectCategories } from '../../../helpers/subjectCategories'
 
-class NamesList extends Component {
+class InfoList extends Component {
   constructor(props){
     super(props)
 
     this.state={
-      selectedIndex: "00"
+      peopleSelected: 0,
+      subjectSelected: "00"
     }
 
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  handleItemClick(e,index){
-    this.setState({ selectedIndex: index });
+  handleItemClick(e,index,type){
+    if (type==="People"){
+      this.setState({ peopleSelected: index });
+    } else if (type==="Subject"){
+      console.log(index)
+      this.setState({ subjectSelected: index },()=>{console.log(this.state)});
+    }
   };
 
   render(){
@@ -38,8 +44,8 @@ class NamesList extends Component {
         return (
           <ListItem
             button
-            selected={this.state.selectedIndex === i}
-            onClick={event => this.handleItemClick(event, i)}
+            selected={this.state.peopleSelected === i}
+            onClick={event => this.handleItemClick(event,i,"People")}
             key={i}
           >
             <ListItemText primary={name.firstName+" "+name.lastName} />
@@ -60,7 +66,7 @@ class NamesList extends Component {
       }).map((cat,i)=>{
           return (
             <div>
-            <ListSubheader key={String(i)}>{cat.category}</ListSubheader>
+            <ListSubheader key={i}>{cat.category}</ListSubheader>
               {this.props.items.filter((subject)=>{
                 return subject.category.includes(cat.category)
               }).sort((a,b)=>{
@@ -77,8 +83,9 @@ class NamesList extends Component {
                 return (
                   <ListItem
                     button
-                    selected={this.state.selectedIndex === String(i)+String(j)}
-                    onClick={event => this.handleItemClick(event, String(i)+String(j))}
+                    selected={this.state.subjectSelected === String(i)+String(j)}
+                    onClick={(event)=>{
+                      this.handleItemClick(event,String(i)+String(j),"Subject")}}
                     key={String(i)+String(j)}
                   >
                     <ListItemText primary={subject.subject} />
@@ -100,4 +107,4 @@ class NamesList extends Component {
   }
 }
 
-export default NamesList;
+export default InfoList;
