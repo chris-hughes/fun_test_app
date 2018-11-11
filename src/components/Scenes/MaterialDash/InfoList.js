@@ -22,7 +22,6 @@ class InfoList extends Component {
     if (type==="People"){
       this.setState({ peopleSelected: index });
     } else if (type==="Subject"){
-      console.log(index)
       this.setState({ subjectSelected: index },()=>{console.log(this.state)});
     }
   };
@@ -46,7 +45,7 @@ class InfoList extends Component {
             button
             selected={this.state.peopleSelected === i}
             onClick={event => this.handleItemClick(event,i,"People")}
-            key={i}
+            key={name.firstName+name.lastName+String(i)}
           >
             <ListItemText primary={name.firstName+" "+name.lastName} />
           </ListItem>
@@ -65,8 +64,10 @@ class InfoList extends Component {
         return 0;
       }).map((cat,i)=>{
           return (
-            <div>
-            <ListSubheader key={i}>{cat.category}</ListSubheader>
+            <div key={i}>
+              <ListSubheader key={cat.category+String(i)}>
+                {cat.category}
+              </ListSubheader>
               {this.props.items.filter((subject)=>{
                 return subject.category.includes(cat.category)
               }).sort((a,b)=>{
@@ -86,7 +87,7 @@ class InfoList extends Component {
                     selected={this.state.subjectSelected === String(i)+String(j)}
                     onClick={(event)=>{
                       this.handleItemClick(event,String(i)+String(j),"Subject")}}
-                    key={String(i)+String(j)}
+                    key={subject.subject+String(j)}
                   >
                     <ListItemText primary={subject.subject} />
                   </ListItem>
