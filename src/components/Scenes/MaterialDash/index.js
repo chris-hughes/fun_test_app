@@ -15,16 +15,9 @@ class MaterialDash extends Component {
     super(props)
 
     // these will be API calls and possibly moved to didMount
-    const people = fakePeople.map((person)=>{
-      return {firstName: person.firstName, lastName: person.lastName}
-    })
-
-    const subjects = fakeSubjects.map((sub)=>{
-      return {
-        subject: sub.subject,
-        category: sub.category
-      }
-    })
+    const people = fakePeople
+    const subjects = fakeSubjects
+    
 
     this.state = {
       people,
@@ -70,7 +63,9 @@ class MaterialDash extends Component {
           />
         </Grid>
         <Grid item sm>
-          <Profile styles={styles} item={this.state.displayPerson} />
+          <Profile styles={styles}
+            displayPerson={this.state.displayPerson}
+          />
         </Grid>
       </Grid>
     )

@@ -16,7 +16,7 @@ const styles = theme => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper
   },
-  leftPanel: {
+  panel: {
     marginRight: 5
   }
 });
@@ -26,7 +26,7 @@ class InfoSelector extends Component {
     const { classes } = this.props;
 
     return (
-      <Paper className={classes.leftPanel} style={this.props.styles.Paper}>
+      <Paper className={classes.panel} style={this.props.styles.Paper}>
         <div className={classes.root}>
           <List component="nav">
             <ListItem
