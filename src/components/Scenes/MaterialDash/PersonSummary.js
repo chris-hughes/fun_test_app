@@ -22,7 +22,7 @@ const styles = theme => ({
   }
 });
 
-class Profile extends Component{
+class PersonSummary extends Component{
   render(){
     const { classes } = this.props;
     return (
@@ -42,7 +42,10 @@ class Profile extends Component{
                   <List component="ul">
                     {this.props.displayPerson.teaching.map((sub)=>{
                       return (
-                        <ListItem key={sub}>
+                        <ListItem
+                          button
+                          key={sub}
+                        >
                           <ListItemText primary={sub} />
                         </ListItem>
                       )
@@ -60,7 +63,10 @@ class Profile extends Component{
                   <List component="ul">
                     {this.props.displayPerson.learning.map((sub)=>{
                       return (
-                        <ListItem key={sub}>
+                        <ListItem
+                          button
+                          key={sub}
+                        >
                           <ListItemText primary={sub} />
                         </ListItem>
                       )
@@ -76,4 +82,4 @@ class Profile extends Component{
   }
 }
 
-export default withStyles(styles)(Profile);
+export default withStyles(styles)(PersonSummary);

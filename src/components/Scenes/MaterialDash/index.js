@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Grid } from '@material-ui/core'
 import InfoSelector from './InfoSelector'
-import Profile from './Profile'
+import PersonSummary from './PersonSummary'
+import SubjectSummary from './SubjectSummary'
 
 import { fakePeople } from '../../../helpers/fakePeople'
 import { fakeSubjects } from '../../../helpers/fakeSubjects'
 
 const styles = {
-  Paper: { padding:20, marginTop:10, marginBottom:10 }
+  Paper: { padding:20, marginTop:10, marginBottom:10 , height: 400, overflow: 'auto'}
 }
 
 class MaterialDash extends Component {
@@ -17,14 +18,14 @@ class MaterialDash extends Component {
     // these will be API calls and possibly moved to didMount
     const people = fakePeople
     const subjects = fakeSubjects
-    
+
 
     this.state = {
       people,
       subjects,
       // initial display
       displayCategory: "People",
-      displayPerson: fakePeople[0],
+      displayPerson: people[0],
       displaySubject: subjects[0]
     }
 
@@ -53,6 +54,19 @@ class MaterialDash extends Component {
   }
 
   render(){
+    let content
+    if (this.state.displayCategory==="People"){
+      content=
+        <PersonSummary styles={styles}
+          displayPerson={this.state.displayPerson}
+        />
+    } else if (this.state.displayCategory==="Subject") {
+      content=
+        <SubjectSummary styles={styles}
+          displaySubject={this.state.displaySubject}
+        />
+    }
+
     return (
       <Grid container>
         <Grid item sm>
@@ -63,9 +77,7 @@ class MaterialDash extends Component {
           />
         </Grid>
         <Grid item sm>
-          <Profile styles={styles}
-            displayPerson={this.state.displayPerson}
-          />
+          {content}
         </Grid>
       </Grid>
     )

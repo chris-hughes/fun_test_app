@@ -10,6 +10,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - find a way to extract unique categories from Subjects
 
+- Some people just want to watch the world learn
+
 ### `functionality`
 
 ~~ nav buttons actually route places ~~
