@@ -10,28 +10,28 @@ class InfoList extends Component {
   constructor(props){
     super(props)
 
-    this.state={
-      peopleSelected: 0,
-      subjectSelected: "00"
-    }
-
-    this.handleItemClick = this.handleItemClick.bind(this);
+    this.isSelected = this.isSelected.bind(this);
   }
 
-  handleItemClick(e,index,type,item){
-    if (type==="People"){
-      this.setState({ peopleSelected: index });
-    } else if (type==="Subject"){
-      this.setState({ subjectSelected: index });
+  isSelected(item){
+    if (this.props.displayCategory==="People"){
+      if (this.props.displayPerson.firstName===item.firstName
+        && this.props.displayPerson.lastName===item.lastName){
+          return true
+        }
+    } else if (this.props.displayCategory==="Subject"){
+      if (this.props.displaySubject.subject===item.subject){
+        return true
+      }
+    } else {
+      return false
     }
-
-    this.props.handleItemSelected(e,type,item)
-  };
+  }
 
   render(){
     let list;
-    if (this.props.cat==="People"){
-      list = this.props.items.sort((a,b)=>{
+    if (this.props.displayCategory==="People"){
+      list = this.props.people.sort((a,b)=>{
         let nameA = a.firstName.toUpperCase()
         let nameB = b.firstName.toUpperCase()
         if (nameA < nameB){
@@ -45,15 +45,15 @@ class InfoList extends Component {
         return (
           <ListItem
             button
-            selected={this.state.peopleSelected === i}
-            onClick={event => this.handleItemClick(event,i,"People",name)}
+            selected={this.isSelected(name)}
+            onClick={()=>this.props.handleItemClick(name)}
             key={name.firstName+name.lastName+String(i)}
           >
             <ListItemText primary={name.firstName+" "+name.lastName} />
           </ListItem>
         )
       })
-    } else if (this.props.cat==="Subject"){
+    } else if (this.props.displayCategory==="Subject"){
       list = subjectCategories.sort((a,b)=>{
         let nameA = a.category.toUpperCase()
         let nameB = b.category.toUpperCase()
@@ -70,7 +70,7 @@ class InfoList extends Component {
               <ListSubheader key={cat.category+String(i)}>
                 {cat.category}
               </ListSubheader>
-              {this.props.items.filter((subject)=>{
+              {this.props.subjects.filter((subject)=>{
                 return subject.category.includes(cat.category)
               }).sort((a,b)=>{
                 let nameA = a.subject.toUpperCase()
@@ -86,9 +86,8 @@ class InfoList extends Component {
                 return (
                   <ListItem
                     button
-                    selected={this.state.subjectSelected === String(i)+String(j)}
-                    onClick={(event)=>{
-                      this.handleItemClick(event,String(i)+String(j),"Subject",{subject: subject.subject})}}
+                    selected={this.isSelected(subject)}
+                    onClick={()=>this.props.handleItemClick(subject)}
                     key={subject.subject+String(j)}
                   >
                     <ListItemText primary={subject.subject} />

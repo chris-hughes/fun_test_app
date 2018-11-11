@@ -14,6 +14,7 @@ class MaterialDash extends Component {
   constructor(props){
     super(props)
 
+    // these will be API calls and possibly moved to didMount
     const people = fakePeople.map((person)=>{
       return {firstName: person.firstName, lastName: person.lastName}
     })
@@ -29,24 +30,33 @@ class MaterialDash extends Component {
       people,
       subjects,
       // initial display
-      displayItem: fakePeople[0]
+      displayCategory: "People",
+      displayPerson: fakePeople[0],
+      displaySubject: subjects[0]
     }
 
-    this.handleItemSelected = this.handleItemSelected.bind(this);
+    this.handleCategoryClick = this.handleCategoryClick.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this);
+
   }
 
-  handleItemSelected(e,cat,item){
+  handleCategoryClick(category){
+    this.setState({displayCategory: category})
+  }
+
+  handleItemClick(item){
     let displayItem;
-    if (cat==="People"){
+    if (this.state.displayCategory==="People"){
       displayItem = this.state.people.find((person)=>{
         return person.firstName===item.firstName && person.lastName===item.lastName
       })
-    } else if (cat==="Subject"){
-      displayItem = this.state.subjects.find((sub)=>{
-        return sub.subject===item.subject
-      })
+      this.setState({displayPerson: displayItem})
+    } else if (this.state.displayCategory==="Subject"){
+        displayItem = this.state.subjects.find((sub)=>{
+          return sub.subject===item.subject
+        })
+        this.setState({displaySubject: displayItem})
     }
-    this.setState({displayItem: displayItem},()=>{console.log(this.state.displayItem)})
   }
 
   render(){
@@ -54,13 +64,13 @@ class MaterialDash extends Component {
       <Grid container>
         <Grid item sm>
           <InfoSelector styles={styles}
-            people={this.state.people}
-            subjects={this.state.subjects}
-            handleItemSelected={this.handleItemSelected}
+            {...this.state}
+            handleCategoryClick={this.handleCategoryClick}
+            handleItemClick={this.handleItemClick}
           />
         </Grid>
         <Grid item sm>
-          <Profile styles={styles} item={this.state.displayItem} />
+          <Profile styles={styles} item={this.state.displayPerson} />
         </Grid>
       </Grid>
     )
