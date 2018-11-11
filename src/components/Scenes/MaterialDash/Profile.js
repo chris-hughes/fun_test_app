@@ -4,7 +4,13 @@ import { Paper } from '@material-ui/core'
 function Profile(props){
   return (
     <Paper style={props.styles.Paper}>
-      Right Pane
+      <div>
+        {Object.keys(props.item).map((i)=>{
+          return (
+            <div key={i}>{i}: {props.item.id}</div>
+          )
+        })}
+      </div>
     </Paper>
   )
 }

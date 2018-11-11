@@ -18,12 +18,14 @@ class InfoList extends Component {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  handleItemClick(e,index,type){
+  handleItemClick(e,index,type,item){
     if (type==="People"){
       this.setState({ peopleSelected: index });
     } else if (type==="Subject"){
-      this.setState({ subjectSelected: index },()=>{console.log(this.state)});
+      this.setState({ subjectSelected: index });
     }
+
+    this.props.handleItemSelected(e,type,item)
   };
 
   render(){
@@ -44,7 +46,7 @@ class InfoList extends Component {
           <ListItem
             button
             selected={this.state.peopleSelected === i}
-            onClick={event => this.handleItemClick(event,i,"People")}
+            onClick={event => this.handleItemClick(event,i,"People",name)}
             key={name.firstName+name.lastName+String(i)}
           >
             <ListItemText primary={name.firstName+" "+name.lastName} />
@@ -86,7 +88,7 @@ class InfoList extends Component {
                     button
                     selected={this.state.subjectSelected === String(i)+String(j)}
                     onClick={(event)=>{
-                      this.handleItemClick(event,String(i)+String(j),"Subject")}}
+                      this.handleItemClick(event,String(i)+String(j),"Subject",{subject: subject.subject})}}
                     key={subject.subject+String(j)}
                   >
                     <ListItemText primary={subject.subject} />

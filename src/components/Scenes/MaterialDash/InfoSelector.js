@@ -66,7 +66,9 @@ class InfoSelector extends Component {
 
           <List component="nav">
             <InfoList items={items}
-              cat={this.state.categorySelected} />
+              cat={this.state.categorySelected}
+              handleItemSelected={this.props.handleItemSelected}
+            />              
           </List>
         </div>
       </Paper>

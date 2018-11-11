@@ -27,8 +27,26 @@ class MaterialDash extends Component {
 
     this.state = {
       people,
-      subjects
+      subjects,
+      // initial display
+      displayItem: fakePeople[0]
     }
+
+    this.handleItemSelected = this.handleItemSelected.bind(this);
+  }
+
+  handleItemSelected(e,cat,item){
+    let displayItem;
+    if (cat==="People"){
+      displayItem = this.state.people.find((person)=>{
+        return person.firstName===item.firstName && person.lastName===item.lastName
+      })
+    } else if (cat==="Subject"){
+      displayItem = this.state.subjects.find((sub)=>{
+        return sub.subject===item.subject
+      })
+    }
+    this.setState({displayItem: displayItem},()=>{console.log(this.state.displayItem)})
   }
 
   render(){
@@ -38,10 +56,11 @@ class MaterialDash extends Component {
           <InfoSelector styles={styles}
             people={this.state.people}
             subjects={this.state.subjects}
+            handleItemSelected={this.handleItemSelected}
           />
         </Grid>
         <Grid item sm>
-          <Profile styles={styles} />
+          <Profile styles={styles} item={this.state.displayItem} />
         </Grid>
       </Grid>
     )
